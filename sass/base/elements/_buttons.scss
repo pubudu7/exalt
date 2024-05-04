@@ -1,0 +1,36 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.exalt-readmore-btn {
+	border: none;
+	border-radius: 3px;
+	background: var(--exalt-color-button-background);
+	color: var(--exalt-color-button-text);
+	cursor: pointer;
+	line-height: 1;
+	padding: 0.8rem 1rem;
+	font-family: var(--exalt-font-family-headings);
+	font-size: var(--exalt-font-size-base);
+	font-weight: bold;
+
+	&:hover {
+		color: var(--exalt-color-button-hover-text);
+		background: var(--exalt-color-button-hover-background);
+	}
+
+	&:active,
+	&:focus {
+		background: var(--exalt-color-button-focus-background);
+	}
+}
+
+svg.exalt-svg-icon {
+	fill: currentColor;
+}
+
+.exalt-readmore-btn {
+	font-size: var(--exalt-font-size-base);
+	display: inline-block;
+	padding: 0.7rem 0.9rem;
+}

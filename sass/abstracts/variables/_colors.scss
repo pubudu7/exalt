@@ -1,0 +1,37 @@
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-ins: #fff9c0;
+$color__text-screen: #21759b;
+$color__border-abbr: #666; 
+
+// Default Colors.
+:root {
+    --exalt-color-primary: #FC5656;
+    --exalt-color-tertiary: #272c30;
+
+    --exalt-color-body-background: #ffffff;
+    --exalt-color-boxed-layout-background: #dddddd;
+    --exalt-color-light-background: #F7F6F1;
+    --exalt-color-dark-background: #3c3c3c;
+    --exalt-color-main-menu: #272c30;
+
+    --exalt-color-text-main: #2c2b2b;
+    --exalt-color-text-light: #7D7D7D;
+    --exalt-color-text-headings: var(--exalt-color-text-main);
+    --exalt-color-link: #2c2b2b;
+    --exalt-color-link-hover: var(--exalt-color-primary);
+    --exalt-color-link-visited: #5d7ddb;
+
+    --exalt-color-button-background: var(--exalt-color-primary);
+    --exalt-color-button-text: #ffffff;
+    --exalt-color-button-hover-text: #ffffff;
+    --exalt-color-button-hover-background: #222222;
+    --exalt-color-button-focus-background: #111111;
+
+    --exalt-color-border: #E0E0E0;
+    --exalt-color-input-border: #ccc;
+    --exalt-color-text-input-focus: var(--exalt-color-text-main);
+    --exalt-color-input: var(--exalt-color-text-main);
+
+    --exalt-color-background-pre: #eeeeee;
+}

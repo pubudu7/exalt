@@ -1,0 +1,19 @@
+a {
+	color: var(--exalt-color-link);
+	text-decoration: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: var(--exalt-color-link-hover);
+	}
+
+	&:focus {
+		outline: thin dotted;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}

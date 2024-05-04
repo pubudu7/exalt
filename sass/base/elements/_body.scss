@@ -1,0 +1,79 @@
+body {
+	background-color: var(--exalt-color-body-background); // Fallback for when there is no custom background color defined.
+}
+
+.exalt-container {
+	width: 1280px;
+	max-width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.exalt-boxed {
+	background-color: var(--exalt-color-boxed-layout-background);
+
+	#page {
+		margin: 0 auto;
+		width: 1380px;
+		max-width: 100%;
+		background-color: var(--exalt-color-body-background);
+	}
+}
+
+body.exalt-boxed .exalt-container {
+	width: auto;
+	max-width: 92.7536231884058%;
+}
+
+.site-content {
+	padding: 30px 0;
+
+	@media only screen and (min-width: 600px) {
+		padding: 50px 0;
+	}
+}
+
+.exalt-has-featured-content .site-content {
+	padding-top: 0;
+}
+
+@media only screen and (min-width: 768px) {
+	.content-area {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	#primary {
+		width: 70.3125%;
+	}
+	
+	#secondary {
+		width: 29.6875%;
+		padding-left: 50px;
+	}
+
+	.exalt-left-sidebar {
+		#secondary {
+			order: -10;
+			padding-left: 0;
+			padding-right: 60px;
+		}
+		.exalt-featured-top {
+			order: -20;
+		}
+	}
+
+	.exalt-center-content {
+		#primary {
+			margin: 0 auto;
+		}
+	}
+}
+
+.exalt-no-sidebar #primary {
+	width: 100%;
+}
+
+.page-template-template-fullwidth #primary {
+	width: 100%;
+}

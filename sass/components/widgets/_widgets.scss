@@ -1,0 +1,89 @@
+.widget {
+	margin: 0 0 50px;
+
+	// Make sure select elements fit in widgets.
+	select {
+		max-width: 100%;
+	}
+
+	ol, ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul li {
+		list-style: none;
+		margin-bottom: 0.5em;
+	}
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	.wp-block-spacer {
+		margin-bottom: -50px;
+	}
+
+}
+
+.exalt-footer-widget-area .widget:first-of-type {
+	margin-top: 50px;
+}
+
+.clearfix {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+		table-layout: fixed;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+#secondary {
+	.widget {
+		background: var( --exalt-color-light-background );
+		padding: 30px;
+		//border: 1px solid var(--exalt-color-border);
+	}
+	.widget-title,
+	.wp-block-heading {
+		color: var(--exalt-color-text-headings);
+	}
+}
+
+.widget-title,
+.widget_block h2.wp-block-heading,
+.widget_block h3.wp-block-heading,
+.widget_block h4.wp-block-heading {
+	margin: 0 0 20px;
+	font-size: 21px;
+	text-transform: uppercase;
+}
+
+.exalt-header-sidebar {
+	figure {
+		margin: 0;
+	}
+}
+
+.exalt-sidebar-header-after,
+.exalt-header-sidebar {
+	.widget {
+		margin: 1.5em 0 0;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.exalt-has-featured-content .exalt-sidebar-header-after {
+	margin-bottom: 60px;
+}
