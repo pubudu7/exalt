@@ -1,7 +1,7 @@
 <?php
 
 function exalt_navigation_location() {
-    $exalt_header_layout = get_theme_mod( 'exalt_header_layout', 'default' );
+    $exalt_header_layout = exalt_get_header_layout();
     if ( 'default' == $exalt_header_layout ) {
         add_action( 'exalt_header_bottom', 'exalt_navigation_block' );
     } elseif ('single-line' == $exalt_header_layout ) {
@@ -108,11 +108,11 @@ function exalt_slideout_menu_toggle_location() {
         $location = get_theme_mod( 'exalt_slideout_btn_loc', 'primary-menu' );
 
         if ( 'before-logo' === $location ) {
-            add_action( 'exalt_before_header_main', 'exalt_slide_out_menu_toggle', 4 );
+            add_action( 'exalt_before_header_main', 'exalt_slide_out_menu_toggle', 8 );
         } elseif ( 'top-bar' === $location ) {
             add_action( 'exalt_before_top_bar_main', 'exalt_slide_out_menu_toggle', 5 );
         } else {
-            if ( 'single-line' === get_theme_mod( 'exalt_header_layout', 'default' ) ) {
+            if ( 'single-line' === exalt_get_header_layout() ) {
                 add_action( 'exalt_after_primary_nav', 'exalt_slide_out_menu_toggle', 15 );
             } else {
                 add_action( 'exalt_after_primary_nav', 'exalt_slide_out_menu_toggle', 15 );

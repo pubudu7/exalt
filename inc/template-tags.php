@@ -113,7 +113,6 @@ if ( ! function_exists( 'exalt_social_nav' ) ) :
 		endif; 
 	}
 endif;
-add_action( 'exalt_after_top_bar_main', 'exalt_social_nav' );
 
 
 if ( ! function_exists( 'exalt_posted_on' ) ) :

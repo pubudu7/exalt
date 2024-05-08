@@ -200,7 +200,7 @@ if ( ! function_exists( 'exalt_custom_css' ) ) {
         }
 
         $header_layout_class = ".exalt-default-header";
-        if ( 'single-line' === get_theme_mod( 'exalt_header_layout', 'default' ) ) {
+        if ( 'single-line' === exalt_get_header_layout() ) {
             $header_layout_class = ".exalt-line-header";
         }
 
@@ -297,7 +297,7 @@ if ( ! function_exists( 'exalt_custom_css' ) ) {
         /**
          * HEADER COLORS.
          */
-        $header_layout = get_theme_mod( 'exalt_header_layout', 'default' );
+        $header_layout = exalt_get_header_layout();
         $header_bg_color = get_theme_mod( 'exalt_header_bg_color', '' );
         $menu_bg_color = get_theme_mod( 'exalt_menu_bg_color', '' );
         $menu_link_color = get_theme_mod( 'exalt_menu_link_color', '' );

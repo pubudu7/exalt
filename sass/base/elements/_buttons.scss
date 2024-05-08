@@ -2,6 +2,7 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
+.exalt-cta-btn,
 .exalt-readmore-btn {
 	border: none;
 	border-radius: 3px;
@@ -33,4 +34,8 @@ svg.exalt-svg-icon {
 	font-size: var(--exalt-font-size-base);
 	display: inline-block;
 	padding: 0.7rem 0.9rem;
+}
+
+.exalt-cta-btn {
+	margin: 0 10px;
 }

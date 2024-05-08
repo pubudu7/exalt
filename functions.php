@@ -7,7 +7,7 @@
 
 if ( ! defined( 'EXALT_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'EXALT_VERSION', '1.0.4' );
+	define( 'EXALT_VERSION', '1.0.5' );
 }
 
 /**
@@ -129,10 +129,28 @@ function exalt_setup() {
 			),
 			'footer-2' => array(
 				'recent-posts',
-				'categories',
 			),
 			'footer-3' => array(
 				'text_about',
+				'meta'
+			),
+		),
+		'theme_mods' => array(
+			'exalt_display_social_topbar' => false,
+			'exalt_social_beside_logo' => true,
+			'exalt_show_header_cta' => true,
+			'exalt_show_slideout_sb' => true,
+			'exalt_show_pmenu_onslideout' => true
+		),
+		'nav_menus' => array(
+			// Assign a menu to the "menu-social" location.
+			'social' => array(
+				'name' => esc_html__( 'Social Menu', 'exalt' ),
+				'items' => array(
+					'link_facebook',
+					'link_youtube',
+					'link_twitter',
+				),
 			),
 		)
 	);

@@ -829,6 +829,42 @@ function exalt_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Social Menu - show next to logo.
+	$wp_customize->add_setting(
+		'exalt_social_beside_logo',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'exalt_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_social_beside_logo',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Display Social Menu beside site branding', 'exalt' ),
+			'section'     => 'exalt_header_layout_section',
+			'active_callback' => 'exalt_is_default_header'
+		)
+	);
+
+	// Social Menu - show next to logo.
+	$wp_customize->add_setting(
+		'exalt_social_beside_pmenu',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'exalt_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_social_beside_pmenu',
+		array(
+			'type'        		=> 'checkbox',
+			'label'       		=> esc_html__( 'Display Social Menu beside primary menu', 'exalt' ),
+			'section'     		=> 'exalt_header_layout_section',
+			'active_callback' 	=> 'exalt_is_line_header'
+		)
+	);
+
 	// Header Padding Top - Desktop
 	$wp_customize->add_setting(
 		'exalt_header_padding_top_desktop',
@@ -1230,6 +1266,23 @@ function exalt_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Topbar - show social on topbar
+	$wp_customize->add_setting(
+		'exalt_display_social_topbar',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'exalt_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_display_social_topbar',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Display social menu on topbar', 'exalt' ),
+			'section'     => 'exalt_topbar_section',
+		)
+	);
+
 	// Topbar BG Color
 	$wp_customize->add_setting(
 		'exalt_topbar_bg_color',
@@ -1307,6 +1360,99 @@ function exalt_customize_register( $wp_customize ) {
 				'section'		    => 'exalt_topbar_section',
 				'label'			    => esc_html__( 'Text Color', 'exalt' ),
 			)
+		)
+	);
+
+	// Header CTA section
+	$wp_customize->add_section(
+		'exalt_header_cta_section',
+		array(
+			'title' => esc_html__( 'Call to Action Button', 'exalt' ),
+			'priority' => 20,
+			'panel'	=> 'exalt_panel_header'
+		)
+	);
+
+	// Header - show header cta on desktop header
+	$wp_customize->add_setting(
+		'exalt_show_header_cta',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'exalt_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_show_header_cta',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Display on header', 'exalt' ),
+			'section'     => 'exalt_header_cta_section',
+		)
+	);
+
+	// Header - show header cta on mobile header
+	$wp_customize->add_setting(
+		'exalt_hide_cta_mobile',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'exalt_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_hide_cta_mobile',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Hide on Mobile Header', 'exalt' ),
+			'section'     => 'exalt_header_cta_section',
+		)
+	);	
+
+	$wp_customize->add_setting(
+		'exalt_header_cta_txt',
+		array(
+			'default'			=> esc_html__( 'SUBSCRIBE', 'exalt' ),
+			'sanitize_callback'	=> 'exalt_sanitize_html'
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_header_cta_txt',
+		array(
+			'section'		=> 'exalt_header_cta_section',
+			'type'			=> 'text',
+			'label'			=> esc_html__( 'Button Text', 'exalt' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'exalt_header_cta_url',
+		array(
+			'default'			=> '',
+			'sanitize_callback'	=> 'exalt_sanitize_url'
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_header_cta_url',
+		array(
+			'section'		=> 'exalt_header_cta_section',
+			'type'			=> 'url',
+			'label'			=> esc_html__( 'Button URL', 'exalt' ),
+		)
+	);
+
+	// Header - Cta open link in new window
+	$wp_customize->add_setting(
+		'exalt_header_cta_target',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'exalt_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'exalt_header_cta_target',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Open link in new window', 'exalt' ),
+			'section'     => 'exalt_header_cta_section',
 		)
 	);
 

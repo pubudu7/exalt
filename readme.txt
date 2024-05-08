@@ -4,7 +4,7 @@ Contributors: pubudu-malalasekara
 Requires at least: 4.5
 Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,10 @@ Exalt WordPress theme is designed specially for bloggers who want a seamless onl
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
+
+= 1.0.5 - May 08 2024 =
+* New option to add a call to action button on the header.
+* Added more social menu display locations.
 
 = 1.0.4 - May 02 2024 =
 * Added a placeholder image for the small posts in the Featured Posts section for demonstration purpose. This can be turned off from Customizer Settings.

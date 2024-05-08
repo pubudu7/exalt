@@ -15,7 +15,7 @@ function exalt_body_classes( $classes ) {
 	
 	$site_layout = get_theme_mod( 'exalt_site_layout', 'boxed' );
 	$logo_alignment = get_theme_mod( 'exalt_logo_align', 'left' );
-	$header_layout = get_theme_mod( 'exalt_header_layout', 'default' );
+	$header_layout = exalt_get_header_layout();
 	$sidebar_layout = exalt_get_layout();
 
 	if ( 'boxed' === $site_layout ) {

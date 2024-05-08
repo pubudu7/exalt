@@ -1,10 +1,17 @@
 <?php
 
 /**
+ * Header Layout.
+ */
+function exalt_get_header_layout() {
+    return get_theme_mod( 'exalt_header_layout', 'default' );
+}
+
+/**
  * Header Top Bar
  */
 function exalt_header_top_bar() {
-    if ( has_nav_menu( 'secondary' ) || has_nav_menu( 'social' ) ) : ?>
+    if ( has_nav_menu( 'secondary' ) || ( has_nav_menu( 'social' ) && true === get_theme_mod( 'exalt_display_social_topbar', true ) ) ) : ?>
         <div class="exalt-top-bar desktop-only">
             <div class="top-bar-inner exalt-container">
                 
@@ -84,7 +91,32 @@ function exalt_header_sidebar() {
         </div>
     <?php endif;
 }
-add_action( 'exalt_after_header_main', 'exalt_header_sidebar', 7 );
+add_action( 'exalt_after_header_main', 'exalt_header_sidebar' );
+
+/**
+ * Container Header inner right side
+ */
+function exalt_header_inner_right_container() {
+    ?>
+        <div class="exalt-header-inner-right">
+            <?php do_action( 'exalt_header_inner_right' ); ?>
+        </div>
+    <?php
+}
+add_action( 'exalt_after_header_main', 'exalt_header_inner_right_container', 15 );
+
+/**
+ * Container Header inner left side.
+ * @To do decide priority
+ */
+function exalt_header_inner_left_container() {
+    ?>
+        <div class="exalt-header-inner-left">
+            <?php do_action( 'exalt_header_inner_left' ); ?>
+        </div>
+    <?php
+}
+add_action( 'exalt_before_header_main', 'exalt_header_inner_left_container', 5 );
 
 /**
  * Mobile Menu toggle.
@@ -97,7 +129,81 @@ function exalt_mobile_menu_toggle() {
         </button>
     <?php
 }
-add_action( 'exalt_after_header_main', 'exalt_mobile_menu_toggle', 6 );
+add_action( 'exalt_after_header_main', 'exalt_mobile_menu_toggle', 20 );
+
+if ( ! function_exists( 'exalt_header_cta' ) ) :
+    /**
+     * Header CTA action button.
+     */
+    function exalt_header_cta() {
+        $show_cta = get_theme_mod( 'exalt_show_header_cta', false );
+
+        if ( true === $show_cta ) {
+            $cta_txt = get_theme_mod( 'exalt_header_cta_txt', esc_html__( 'SUBSCRIBE', 'exalt' ) );
+            $cta_url = get_theme_mod( 'exalt_header_cta_url', '' );
+            if ( ! $cta_url ) {
+                $cta_url = "#";
+            }
+            $cta_target = get_theme_mod( 'exalt_header_cta_target', false );
+    
+            ?>
+                <a href="<?php echo esc_url( $cta_url ); ?>" class="exalt-cta-btn"
+                    <?php if ( true == $cta_target ) {
+                        echo 'target="_blank"';
+                    } ?>
+                ><?php echo esc_html( $cta_txt ); ?></a>
+    
+            <?php
+        }
+    }
+endif;
+
+/**
+ * Place the cta button.
+ */
+function exalt_locate_cta_btn() {
+    $header_layout = exalt_get_header_layout();
+    if ( 'default' == $header_layout ) {
+        $logo_align = get_theme_mod( 'exalt_logo_align', 'left' );
+
+        if ( 'left' === $logo_align || 'center' === $logo_align ) {
+            add_action( 'exalt_header_inner_right', 'exalt_header_cta' );
+        } elseif ( 'right' === $logo_align ) {
+            add_action( 'exalt_header_inner_left', 'exalt_header_cta' );
+        }
+    } elseif ( 'single-line' == $header_layout ) {
+        add_action( 'exalt_after_primary_nav', 'exalt_header_cta', 8 );
+    }
+    
+}
+add_action( 'wp', 'exalt_locate_cta_btn' );
+
+/**
+ * Place social menu based on the header settings.
+ */
+function exalt_locate_social_menu() {
+    $header_layout = exalt_get_header_layout();
+    if ( 'default' == $header_layout ) {
+        $logo_align = get_theme_mod( 'exalt_logo_align', 'left' );
+
+        if ( true == get_theme_mod( 'exalt_social_beside_logo', false ) ) {
+            if ( 'left' === $logo_align ) {
+                add_action( 'exalt_header_inner_right', 'exalt_social_nav', 15 );
+            } elseif ( 'center' === $logo_align || 'right' === $logo_align ) {
+                add_action( 'exalt_header_inner_left', 'exalt_social_nav' );
+            }
+        }
+    } elseif ( 'single-line' == $header_layout ) {
+        if ( true === get_theme_mod( 'exalt_social_beside_pmenu', false ) ) {
+            add_action( 'exalt_after_primary_nav', 'exalt_social_nav', 5 );
+        }
+    }
+
+    if ( get_theme_mod( 'exalt_display_social_topbar', true ) ) {
+        add_action( 'exalt_after_top_bar_main', 'exalt_social_nav' );
+    }
+}   
+add_action( 'wp', 'exalt_locate_social_menu' );
 
 /**
  * Site branding.
@@ -145,6 +251,6 @@ if ( ! function_exists( 'exalt_site_title' ) ) :
 		</div><!-- .site-branding-container -->
 		<?php
 	}
-    add_action( 'exalt_before_header_main', 'exalt_site_title', 5 );
+    add_action( 'exalt_before_header_main', 'exalt_site_title' );
 
 endif;
